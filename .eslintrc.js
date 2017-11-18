@@ -14,7 +14,7 @@ module.exports = {
     'html'
   ],
   // add your custom rules here
-  "extends": "eslint-config-ali",
+  "extends": ["eslint-config-ali", 'eslint:recommended', 'plugin:vue/recommended'],
   'rules': {
     // allow paren-less arrow functions
     'arrow-parens': 0,

@@ -9,6 +9,7 @@ vue-template-starter是一个基于vue webpack的vue SPA初始化项目
 * scss支持
 * 动态import()语法，用于代码分割与懒加载
 * 添加阿里的eslint-config-ali作为语法检查
+* 添加axios作为默认http请求工具
 
 ``` bash
 # install dependencies
