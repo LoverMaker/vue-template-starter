@@ -4,9 +4,9 @@
 
 ## Build Setup
 
-vue-template-starter是一个基于vue webpack的vue SPA初始化项目
+vue-template-starter是一个基于vue 2.x webpack 4.x的vue SPA初始化项目
 添加了如下内容：
-* scss支持
+* scss, less支持
 * 动态import()语法，用于代码分割与懒加载
 * 添加阿里的eslint-config-ali作为语法检查
 * 添加axios作为默认http请求工具
