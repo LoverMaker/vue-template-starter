@@ -1,7 +1,7 @@
 'use strict'
 const path = require('path')
 const config = require('../config')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const pkg = require('../package.json')
 
 exports.assetsPath = function (_path) {
@@ -66,15 +66,45 @@ exports.cssLoaders = function (options) {
 
 // Generate loaders for standalone style files (outside of .vue)
 exports.styleLoaders = function (options) {
-  const output = []
-  const loaders = exports.cssLoaders(options)
-  for (const extension in loaders) {
-    const loader = loaders[extension]
-    output.push({
-      test: new RegExp('\\.' + extension + '$'),
-      use: loader
-    })
-  }
+  const output = [
+    {
+      test: /\.css$/,
+      use: [
+        !options.extract
+          ? 'vue-style-loader'
+          : MiniCssExtractPlugin.loader,
+        {
+          loader: 'css-loader',
+          options: { importLoaders: 1 }
+        },
+        'postcss-loader'
+      ]
+    },
+    {
+      test: /\.scss$/,
+      use: [
+        'vue-style-loader',
+        'css-loader',
+        'sass-loader'
+      ]
+    },
+    {
+      test: /\.less$/,
+      use: [
+        'vue-style-loader',
+        'css-loader',
+        'less-loader'
+      ]
+    }
+  ];
+  // const loaders = exports.cssLoaders(options)
+  // for (const extension in loaders) {
+  //   const loader = loaders[extension]
+  //   output.push({
+  //     test: new RegExp('\\.' + extension + '$'),
+  //     use: loader
+  //   })
+  // }
   return output
 }
 
